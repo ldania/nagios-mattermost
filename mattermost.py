@@ -20,11 +20,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+
+# Converted by Luigi Dania to Python3
+# Date: 26-July-2022
+
+
+
 import argparse
 import json
-import urllib2
+import urllib.request, urllib.error, urllib.parse
 
-VERSION = "0.3.1"
+VERSION = "0.4.1"
 
 
 def parse():
@@ -98,12 +104,13 @@ def payload(args):
 
 
 def request(url, data):
-    req = urllib2.Request(url, data)
-    response = urllib2.urlopen(req)
+    req = urllib.request.Request(url, data)
+    response = urllib.request.urlopen(req)
     return response.read()
 
 
 if __name__ == "__main__":
     args = parse()
     response = request(args.url, payload(args))
-    print response
+    print(response)
+
